@@ -9,28 +9,38 @@ import { Flower } from "lucide-react";
 export default function Home() {
   return (
     <TaskProvider>
-      <main className="min-h-screen bg-background p-4 md:p-10 transition-colors duration-300 relative">
-        <ScoreDisplay />
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="text-center space-y-2 group cursor-default">
-            <div className="flex items-center justify-center gap-3">
+      <div className="min-h-screen bg-background transition-colors duration-300 relative">
+        {/* Compact Header */}
+        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/60 backdrop-blur-xl">
+          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            {/* Logo Section */}
+            <div className="flex items-center gap-3 group cursor-default">
               <div className="relative">
-                <Flower className="w-10 h-10 md:w-16 md:h-16 text-primary transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-110 logo-flower" />
-                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <Flower className="w-8 h-8 md:w-10 md:h-10 text-primary transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-110 logo-flower" />
+                <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent transition-all duration-500 group-hover:tracking-wider">
-                Flower To-Do
-              </h1>
+              <div className="flex flex-col">
+                <h1 className="text-xl md:text-2xl font-extrabold tracking-tight bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent transition-all duration-500 group-hover:tracking-wider">
+                  Flower To-Do
+                </h1>
+                <p className="text-[10px] md:text-xs text-muted-foreground transition-all duration-500 group-hover:text-foreground/80 hidden sm:block">
+                  Unlimited nested tasks
+                </p>
+              </div>
             </div>
-            <p className="text-muted-foreground text-lg transition-all duration-500 group-hover:text-foreground/80">
-              Unlimited nested tasks for the organized mind.
-            </p>
-          </div>
 
+            {/* Right Side: Score & More */}
+            <div className="flex items-center gap-4">
+              <ScoreDisplay />
+            </div>
+          </div>
+        </header>
+
+        <main className="max-w-4xl mx-auto p-4 md:p-10 space-y-8">
           <ListTabs />
           <TaskList />
-        </div>
-      </main>
+        </main>
+      </div>
     </TaskProvider>
   );
 }

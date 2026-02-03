@@ -16,13 +16,13 @@ export const ScoreDisplay: React.FC = () => {
     }, [totalScore]);
 
     return (
-        <div className="absolute top-4 right-4 md:top-10 md:right-10 flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-full shadow-lg transition-all hover:scale-105">
-            <div className={cn("transition-transform duration-300", animate && "scale-125 text-yellow-500")}>
-                <Trophy className="h-5 w-5 text-yellow-500" />
+        <div className="flex items-center gap-2 bg-card/40 backdrop-blur-md border border-border/50 px-3 py-1.5 rounded-full shadow-sm transition-all hover:scale-105 hover:bg-card/60">
+            <div className={cn("transition-transform duration-300", animate && "scale-125 text-primary")}>
+                <Trophy className="h-4 w-4 text-primary" />
             </div>
-            <div className="flex flex-col items-end leading-none">
-                <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Score</span>
-                <span className={cn("text-xl font-bold tabular-nums transition-colors", animate && "text-primary")}>
+            <div className="flex items-center gap-1.5">
+                <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider hidden sm:inline">Score</span>
+                <span className={cn("text-lg font-bold tabular-nums transition-colors", animate && "text-primary")}>
                     {totalScore}
                 </span>
             </div>
