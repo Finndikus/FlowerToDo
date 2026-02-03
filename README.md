@@ -2,8 +2,8 @@
 
 Flower To-Do is a powerful, minimalist task management application designed for organized minds. It offers a clean, aesthetic interface with advanced features like infinite nesting and automatic database syncing.
 
-![Flower To-Do Screenshot Placeholder](./public/screenshot-placeholder.png)
-*Placeholder for application screenshot*
+<img width="1478" height="840" alt="image" src="https://github.com/user-attachments/assets/6b8f8132-02f1-445b-8398-61b49aa80dca" />
+
 
 ## Core Functionality
 
