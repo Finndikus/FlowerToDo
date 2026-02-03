@@ -38,4 +38,10 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+
+# local data
+save.json
+test-autosave.json
+/db/
+*.log
+lint_output.txt
