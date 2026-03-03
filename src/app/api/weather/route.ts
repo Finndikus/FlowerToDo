@@ -22,10 +22,10 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(weatherData);
-  } catch (error) {
+  } catch (error: any) {
     console.error("API Error:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to fetch weather" },
+      { error: error.message || "Failed to fetch weather" },
       { status: 500 }
     );
   }

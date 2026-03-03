@@ -6,6 +6,8 @@ import { ScoreDisplay } from "@/components/ScoreDisplay";
 import { ListTabs } from "@/components/ListTabs";
 import { Flower } from "lucide-react";
 
+import { WeatherWidget } from "@/components/WeatherWidget";
+
 export default function Home() {
   return (
     <TaskProvider>
@@ -38,6 +40,7 @@ export default function Home() {
         </header>
 
         <main className="max-w-4xl mx-auto p-4 md:p-10 space-y-8">
+          <WeatherWidget city="Berlin" autoRefresh={30} />
           <TaskList />
         </main>
       </div>
