@@ -59,6 +59,78 @@ Open [http://localhost:3000](http://localhost:3000) or `http://192.168.188.100:3
 - **Drag & Drop**: [@dnd-kit](https://dnd-kit.com/)
 - **Animation**: [Canvas Confetti](https://github.com/catdad/canvas-confetti)
 
+## CI/CD Pipeline
+
+The project uses a staged GitHub Actions pipeline that follows a **fail-fast** pattern.
+
+```
+push / pull_request
+        │
+        ▼
+┌─────────────────────────────────────┐
+│ Stage 1 – GATE CHECK  ❌ (Blocking) │
+│  • npm audit --production           │
+│  • npm run build                    │
+└──────────────┬──────────────────────┘
+               │ passes
+       ┌───────┴────────┐
+       ▼                ▼
+┌─────────────┐  ┌──────────────────┐
+│ Stage 2     │  │ Stage 3          │
+│ QUALITY ⚠️  │  │ UNIT TESTS 📊    │
+│ (Non-block) │  │ (Blocking)       │
+│ • ESLint    │  │ • vitest run     │
+│ • tsc check │  │ • coverage report│
+└─────────────┘  └──────────────────┘
+                         │ passes (on main)
+                         ▼
+               ┌──────────────────┐
+               │ Stage 4 – DEPLOY │
+               │ 🚀 Vercel CLI    │
+               └──────────────────┘
+```
+
+### Workflows
+
+| File | Purpose | Trigger |
+|------|---------|---------|
+| `ci.yml` | Main pipeline (Stages 1–3) | Every push & PR |
+| `e2e.yml` | Optional Playwright E2E tests | Manual dispatch or `e2e` label on PR |
+| `deploy.yml` | Production deployment to Vercel | After `CI Pipeline` succeeds on `main` |
+| `pre-commit-check.yml` | Simulate pre-commit hook in CI | Manual dispatch |
+
+### Local pre-commit hook (Husky)
+
+After cloning and running `npm install`, a Git pre-commit hook is automatically installed via Husky. It prevents you from committing code that doesn't build:
+
+```bash
+npm install        # also runs `husky` via the prepare script
+```
+
+Every `git commit` will now run `npm run build` first and abort if the build fails.
+
+### Required secrets for deployment
+
+Add the following secrets to your GitHub repository settings before the deploy workflow will work:
+
+| Secret | Description |
+|--------|-------------|
+| `VERCEL_TOKEN` | Vercel personal access token |
+| `VERCEL_ORG_ID` | Vercel organisation / team ID |
+| `VERCEL_PROJECT_ID` | Vercel project ID |
+
+### Available scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run unit tests (Vitest) |
+| `npm run test:watch` | Run Vitest in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
