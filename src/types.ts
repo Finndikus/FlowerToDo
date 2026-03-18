@@ -15,3 +15,14 @@ export interface TaskList {
   name: string;
   tasks: Task[];
 }
+
+export interface WeatherData {
+  temperature: number;
+  windSpeed: number;
+  weatherCode: number;
+}
+
+export interface WeatherCondition {
+  description: string;
+  emoji: string;
+}
