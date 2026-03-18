@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Security audit (production dependencies)
-        run: npm audit --production
+        run: npm audit --omit=dev
 
       - name: Build verification
         run: npm run build
