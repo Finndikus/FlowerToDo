@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   e2e:
-    name: 🧪 E2E Tests (Playwright)
+    name: E2E Tests (Playwright)
     runs-on: ubuntu-latest
 
     # Only run when triggered manually or when the PR carries the "e2e" label.

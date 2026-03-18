@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   deploy:
-    name: 🚀 Deploy to Vercel (Production)
+    name: Deploy to Vercel (Production)
     runs-on: ubuntu-latest
 
     # Only deploy when the upstream CI Pipeline succeeded.

@@ -1,9 +1,9 @@
 # Skip in CI environments – the CI pipeline handles the build check there.
 if [ "${CI:-false}" = "true" ]; then
-  echo "ℹ️  CI environment – skipping local pre-commit hook."
+  echo "[INFO] CI environment detected – skipping local pre-commit hook."
   exit 0
 fi
 
-echo "🔍 Running pre-commit build check..."
-npm run build || (echo "❌ Build failed! Fix all errors before committing." && exit 1)
-echo "✅ Build check passed – safe to commit."
+echo "[EXEC] Running pre-commit build check..."
+npm run build || (echo "[ERROR] Build failed! Fix all errors before committing." && exit 1)
+echo "[SUCCESS] Build check passed – safe to commit."

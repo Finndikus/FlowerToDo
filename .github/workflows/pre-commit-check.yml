@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   pre-commit:
-    name: 🔍 Pre-Commit Build Check
+    name: Pre-Commit Build Check
     runs-on: ubuntu-latest
 
     steps:
