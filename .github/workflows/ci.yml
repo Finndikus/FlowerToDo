@@ -11,8 +11,7 @@ permissions:
 
 jobs:
   # ─────────────────────────────────────────────────────────────────────────────
-  # Stage 1: GATE CHECK (Blocking) ❌
-  # Hard blockers – pipeline stops here if security audit or build fails.
+  # Stage 1: GATE CHECK (Blocking)
   # ─────────────────────────────────────────────────────────────────────────────
   gate:
     name: Gate Check (Audit + Build)
@@ -44,8 +43,7 @@ jobs:
           retention-days: 5
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # Stage 2: CODE QUALITY (Non-blocking) ⚠️
-  # Reports issues but does not stop the pipeline.
+  # Stage 2: CODE QUALITY (Non-blocking)
   # ─────────────────────────────────────────────────────────────────────────────
   quality:
     name: Code Quality (Lint + TypeScript)
@@ -73,8 +71,7 @@ jobs:
         continue-on-error: true
 
   # ─────────────────────────────────────────────────────────────────────────────
-  # Stage 3: UNIT TESTS (Progressive) 📊
-  # Runs all unit tests and uploads coverage report as an artifact.
+  # Stage 3: UNIT TESTS (Progressive)
   # ─────────────────────────────────────────────────────────────────────────────
   test:
     name: Unit Tests (Vitest)

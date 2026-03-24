@@ -1,7 +1,6 @@
 name: Pre-Commit Check (Buildability)
 
-# Simulate the local pre-commit hook in CI.
-# Useful for verifying the hook logic works without needing a local environment.
+
 # Triggered manually only.
 on:
   workflow_dispatch:

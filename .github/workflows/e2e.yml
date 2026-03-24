@@ -1,7 +1,7 @@
 name: E2E Tests (Optional)
 
-# Triggered manually or automatically on PRs labelled "e2e".
-# Results are informational – failures do NOT block the main pipeline.
+# Triggered manually
+
 on:
   workflow_dispatch:
   pull_request:
@@ -16,12 +16,12 @@ jobs:
     name: E2E Tests (Playwright)
     runs-on: ubuntu-latest
 
-    # Only run when triggered manually or when the PR carries the "e2e" label.
+
     if: >
       github.event_name == 'workflow_dispatch' ||
       contains(github.event.pull_request.labels.*.name, 'e2e')
 
-    # E2E tests are allowed to be flaky – don't block the pipeline.
+
     continue-on-error: true
 
     steps:

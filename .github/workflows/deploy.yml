@@ -1,10 +1,7 @@
 name: Deploy to Production
 
-# Runs only after the CI Pipeline succeeds on the main branch.
-# Requires the following repository secrets:
-#   VERCEL_TOKEN       – Vercel personal access token
-#   VERCEL_ORG_ID      – Vercel organisation / team ID
-#   VERCEL_PROJECT_ID  – Vercel project ID
+# läuft nur wenn Pipeline erfolgreich war
+
 on:
   workflow_run:
     workflows: ['CI Pipeline']
@@ -19,7 +16,7 @@ jobs:
     name: Deploy to Vercel (Production)
     runs-on: ubuntu-latest
 
-    # Only deploy when the upstream CI Pipeline succeeded.
+    
     if: github.event.workflow_run.conclusion == 'success'
 
     steps:
